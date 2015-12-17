@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html>
+    <head>
+        <title>Dinner's Served</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 align="center">Welcome To Dinner's Served</h1>
+        <p align="center"><img src="logo.png" alt="my_logo" style="width: 200px;height: 200px;" align="middle"/></p>
+        <table border = 1 align="center">
+            <thead>
+                <th>Customer</th>
+                <th>Restaurant</th>
+            </thead>
+            <tr align="center">
+                <td><a href = "createCustomer.jsp">Create Customer Account</a></td>
+                <td><a href = "RidGenServlet">Create Restaurant Account</a></td>
+            </tr>
+            <tr align = "center">
+                <td><a href="customerLogin.jsp">Customer Login</a></td>
+                <td><a href="restaurantLogin.jsp">Restaurant Login</a></td>
+            </tr>
+        </table>
+        <script language="javascript">
+            var t = location.search.substring(1).split("?");
+            var k = t.spit("=");
+            if (k[1] == "true"){
+                alert("You have been logged out!!");
+            }
+        </script>
+    </body>
+</html>
