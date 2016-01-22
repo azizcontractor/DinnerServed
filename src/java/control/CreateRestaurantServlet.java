@@ -17,7 +17,7 @@ import objects.Customer;
 import objects.Restaurant;
 
 /**
- *
+ * Used to add a new restaurant entity to the database. 
  * @author Aziz
  */
 @WebServlet(name = "CreateRestaurantServlet", urlPatterns = {"/CreateRestaurantServlet"})
@@ -66,7 +66,8 @@ public class CreateRestaurantServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     * Uses auto generated restaurant id and other information supplied by user to create restaurant entity.
+     * Restaurant has to have a valid cuisine style that it offers.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

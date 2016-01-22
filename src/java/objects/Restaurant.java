@@ -14,7 +14,7 @@ import java.util.List;
 import utils.OracleConnection;
 
 /**
- *
+ * Creates and manages restaurant entities in the database.
  * @author Aziz
  */
 
@@ -42,10 +42,23 @@ public class Restaurant {
    private double dMin;
    private String styleName;
    
+   /**
+    * Create new restaurant.
+    */
     public Restaurant(){
         
     }
     
+    /**
+     * Create new database restaurant entity
+     * @param rid restaurant id (auto generated)
+     * @param password password
+     * @param address restaurant address
+     * @param rName restaurant name
+     * @param phone restaurant phone
+     * @param dMin minimum for delivery
+     * @param sName cuisine style offered by restaurant
+     */
     public void createRestaurant(int rid, String password, String address, String rName, String phone, double dMin, String sName)
     {
             setConn(OracleConnection.getConnection());
@@ -71,6 +84,11 @@ public class Restaurant {
         }
     }
 
+    /**
+     * Validate if cuisine style already exists in the database
+     * @param style cuisine style chosen
+     * @return true if valid false if invalid
+     */
     public boolean validStyle(String style){
         setConn(OracleConnection.getConnection());
         boolean valid = false;
@@ -91,6 +109,10 @@ public class Restaurant {
         return valid;
     }
 
+    /**
+     * List of all current restaurants in database
+     * @return ArrayList of all restaurants in database
+     */
     public List<Restaurant> getRestaurant (){
         conn = OracleConnection.getConnection();
         List<Restaurant> restaurants = new ArrayList<Restaurant>();
@@ -117,6 +139,10 @@ public class Restaurant {
         return restaurants;
     }
 
+    /**
+     * Generates new restaurant id.
+     * @return integer representing new id for new restaurant.
+     */
     public int genRID(){
         conn = OracleConnection.getConnection();
         Integer rid = 0;
@@ -135,6 +161,12 @@ public class Restaurant {
         return rid;
     }
     
+    /**
+     * Authenticate restaurant login with database.
+     * @param rid restaurant id for login
+     * @param pw password to match restaurant id.
+     * @return true if successful false if unsuccessful login attempt.
+     */
     public boolean validateRestaurant(int rid, String pw){
         conn = OracleConnection.getConnection();
         boolean valid = false;
@@ -154,6 +186,10 @@ public class Restaurant {
         return valid;
     }
     
+    /**
+     * Update restaurant information in database
+     * @param r restaurant object containing new values.
+     */
     public void updateRestaurant(Restaurant r){
         conn = OracleConnection.getConnection();
         try{
@@ -173,6 +209,11 @@ public class Restaurant {
         }
     }
     
+    /**
+     * Find restaurant in database by using restaurant id
+     * @param rID id of restaurant to be found
+     * @return list of restaurants matching id (Always 1 entry if found or 0 if no match)
+     */
     public List<Restaurant> getByRID(int rID){
         conn = OracleConnection.getConnection();
         ArrayList<Restaurant> rests = new ArrayList<Restaurant>();
@@ -200,6 +241,11 @@ public class Restaurant {
         return rests;
     }
     
+    /**
+     * Find restaurants matching cuisine style in database
+     * @param search cuisine style to search for
+     * @return list of restaurants that offer given cuisine style
+     */
     public List<Restaurant> getByCStyle(String search){
         conn = OracleConnection.getConnection();
         ArrayList<Restaurant> rests = new ArrayList<Restaurant>();
@@ -227,6 +273,11 @@ public class Restaurant {
         return rests;
     }
     
+    /**
+     * Delete restaurant from database
+     * @param rID id of restaurant to be deleted
+     * @return true if successful false if unsuccessful
+     */
     public boolean deleteRestaurant(int rID){
         conn = OracleConnection.getConnection();
         try{
@@ -245,6 +296,13 @@ public class Restaurant {
         }
     }
     
+    /**
+     * Change password of restaurant in database
+     * @param rID restaurant id
+     * @param oldPwd old password for authentication
+     * @param newPwd new password for update
+     * @return true if successful false if unsuccessful
+     */
     public boolean changePwd(int rID, String oldPwd, String newPwd){
         boolean valid = false;
         conn = OracleConnection.getConnection();
@@ -376,7 +434,10 @@ public class Restaurant {
         this.styleName = styleName;
     }
     
-    
+    /**
+     * Testing functionality
+     * @param args 
+     */
     public static void main (String[] args){
         Restaurant r = new Restaurant();
         //r.createRestaurant(r.genRID(),"2134", "none", "free", "4041123344", 12.34, "Fast Food");

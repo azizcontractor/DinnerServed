@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import objects.Restaurant;
 
 /**
- *
+ * Used to authenticate login attempt by restaurant.
  * @author Aziz
  */
 @WebServlet(name = "RestaurantLoginServlet", urlPatterns = {"/RestaurantLoginServlet"})
@@ -65,7 +65,7 @@ public class RestaurantLoginServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     * Checks restaurant id and password against the database to authenticate login for restaurants.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

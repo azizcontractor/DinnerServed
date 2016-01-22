@@ -20,7 +20,8 @@ import objects.Menu;
 import objects.Restaurant;
 
 /**
- *
+ * Used by customer entity to update personal information in the database. 
+ * Also used to for most other actions regarding customer entity.
  * @author Aziz
  */
 @WebServlet(name = "UpdateCustomerServlet", urlPatterns = {"/UpdateCustomerServlet"})
@@ -55,7 +56,8 @@ public class UpdateCustomerServlet extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
+     * Handles account password and information updates by sending them to the doPost method. Also handles deleting account from database.
+     * Handles searching for particular cuisine style and selection of a restaurant by the customer.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -120,7 +122,8 @@ public class UpdateCustomerServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     * Shows the current user information and allows update.
+     * Also used for changing password.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

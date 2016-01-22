@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import objects.Restaurant;
 
 /**
- *
+ * List all current restaurants to admin
  * @author Aziz
  */
 @WebServlet(name = "ListRestaurantServlet", urlPatterns = {"/ListRestaurantServlet"})
@@ -52,7 +52,7 @@ public class ListRestaurantServlet extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
+     * Generates a list of all current restaurants.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

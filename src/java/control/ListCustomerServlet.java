@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import objects.Customer;
 
 /**
- *
+ * Generates a list of current customers.
  * @author Aziz
  */
 @WebServlet(name = "ListCustomerServlet", urlPatterns = {"/ListCustomerServlet"})
@@ -51,7 +51,7 @@ public class ListCustomerServlet extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
+     * Lists the current customers to admin
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

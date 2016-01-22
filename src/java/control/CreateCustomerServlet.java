@@ -19,7 +19,7 @@ import objects.Customer;
 import utils.OracleConnection;
 
 /**
- *
+ * This is used to create a new customer entity in the database using the information supplied by the user.
  * @author Aziz
  */
 @WebServlet(name = "CreateCustomerServlet", urlPatterns = {"/CreateCustomerServlet"})
@@ -68,7 +68,7 @@ public class CreateCustomerServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     * Takes the user's information and adds it to the database. Checks for new password confirmation.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

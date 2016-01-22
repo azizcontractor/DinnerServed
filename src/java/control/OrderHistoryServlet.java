@@ -19,7 +19,7 @@ import objects.DishOrd;
 import objects.Order;
 
 /**
- *
+ * List order history for customer including order time and status.
  * @author Aziz
  */
 @WebServlet(name = "OrderHistoryServlet", urlPatterns = {"/OrderHistoryServlet"})
@@ -54,7 +54,7 @@ public class OrderHistoryServlet extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
+     * Generates a list of orders by specific customer from the database using their username.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

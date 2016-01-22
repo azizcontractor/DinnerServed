@@ -21,7 +21,7 @@ import objects.Restaurant;
 import utils.OracleConnection;
 
 /**
- *
+ * This servlet is used by the restaurant entity t add dishes to its menu.
  * @author Aziz
  */
 @WebServlet(name = "AddDishServlet", urlPatterns = {"/AddDishServlet"})
@@ -56,7 +56,8 @@ public class AddDishServlet extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
+     * Takes in the restaurant from the session. Generates a new dish with a new dish ID.
+     * Displays current dishes on the submenu as well and allows editing.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

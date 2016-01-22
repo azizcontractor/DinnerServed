@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import objects.Customer;
 
 /**
- *
+ * Used to authenticate customer login information.
  * @author Aziz
  */
 @WebServlet(name = "CustomerLoginServlet", urlPatterns = {"/CustomerLoginServlet"})
@@ -66,7 +66,7 @@ public class CustomerLoginServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     * Checks the database for username and password and if matching allows access or else denies access.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

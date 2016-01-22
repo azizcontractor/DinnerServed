@@ -15,7 +15,7 @@ import java.util.List;
 import utils.OracleConnection;
 
 /**
- *
+ * Dish object corresponding to dish entity in database
  * @author Aziz
  */
 public class Dish {
@@ -29,6 +29,9 @@ public class Dish {
     private String smcat;
     private Connection conn;
     
+    /**
+     * Creates new Dish
+     */
     public Dish(){
         
     }
@@ -89,6 +92,13 @@ public class Dish {
         this.smcat = smcat;
     }
     
+    /**
+     * Lists dishes on the current submenu of the menu of the current restaurant.
+     * @param smcat submenu category
+     * @param mtypemenu type
+     * @param rid restaurant id
+     * @return list of dishes already added to the submenu.
+     */
     public List<Dish> getDish(String smcat, String mtype, int rid){
         conn = OracleConnection.getConnection();
         ArrayList<Dish> dishes = new ArrayList<Dish>();
@@ -118,6 +128,16 @@ public class Dish {
         return dishes;
     }
     
+    /**
+     * Adds a dish to the restaurant's submenu in the database.
+     * @param did dish id
+     * @param dname dish name
+     * @param price dish price
+     * @param desc a small description
+     * @param mtype menu type for dish to be added
+     * @param smcat submenu category for dish to be added
+     * @param rid restaurant id that the dish belongs to
+     */
     public void addDish(int did, String dname, double price, String desc, String mtype, String smcat, int rid){
         conn = OracleConnection.getConnection();
         try{
@@ -138,6 +158,10 @@ public class Dish {
         }
     }
     
+    /**
+     * Generate new dish id
+     * @return integer representing new dish id
+     */    
     public int genID(){
         conn = OracleConnection.getConnection();
         Integer did = 0;
@@ -156,6 +180,14 @@ public class Dish {
         return did;
     }
     
+    /**
+     * Updates dish in database with new information
+     * @param did id of dish to be updated
+     * @param price new price
+     * @param name new name
+     * @param desc new description
+     * @return true if update successful false if unsuccessful
+     */
     public boolean updateDish(int did, double price, String name, String desc){
         boolean done = false;
         conn = OracleConnection.getConnection();
@@ -177,6 +209,11 @@ public class Dish {
         return done;
     }
     
+    /**
+     * Delete a dish from database
+     * @param did id of dish to be deleted.
+     * @return true if deletion successful false if unsuccessful
+     */
     public boolean deleteDish(int did){
         boolean done = false;
         conn = OracleConnection.getConnection();
@@ -195,6 +232,11 @@ public class Dish {
         return done;
     }
     
+    /**
+     * Find dish by dish id in the database
+     * @param did id of dish to be searched for
+     * @return dish object corresponding to the entry in database will have null values if no dish found
+     */
     public Dish getByDID(int did){
         conn = OracleConnection.getConnection();
         Dish d = new Dish();
@@ -220,6 +262,10 @@ public class Dish {
         return d;
     }
     
+    /**
+     * Testing methods of this class
+     * @param args 
+     */
     public static void main (String[] args){
         Dish d = new Dish();
         ArrayList<Dish> dishes = (ArrayList<Dish>) d.getDish("Breakfast Sandwiches", "Breakfast", 45654);

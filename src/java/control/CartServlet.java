@@ -22,7 +22,7 @@ import objects.DishOrd;
 import objects.Order;
 
 /**
- *
+ * This is used as a temporary cart while customers are placing their orders.
  * @author Aziz
  */
 @WebServlet(name = "CartServlet", urlPatterns = {"/CartServlet"})
@@ -57,7 +57,8 @@ public class CartServlet extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
+     * Creates a new entity called ordered dish by using parameters of a dish on the menu. 
+     * Adds it to the temporary cart if it exists or creates a new cart. 
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -106,7 +107,8 @@ public class CartServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     * This method is used to remove a dish from the cart or checkout. 
+     * Checkout creates the order in the database and empties the cart.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

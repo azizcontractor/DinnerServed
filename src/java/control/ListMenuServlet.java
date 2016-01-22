@@ -18,7 +18,7 @@ import objects.Menu;
 import objects.Restaurant;
 
 /**
- *
+ * Used to list all menus of current restaurant.
  * @author Aziz
  */
 @WebServlet(name = "ListMenuServlet", urlPatterns = {"/ListMenuServlet"})
@@ -53,7 +53,7 @@ public class ListMenuServlet extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
+     * Used to list all available menus to restaurant entity.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

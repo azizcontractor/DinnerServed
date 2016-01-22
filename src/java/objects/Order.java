@@ -17,7 +17,7 @@ import java.util.List;
 import utils.OracleConnection;
 
 /**
- *
+ * Order object that represents customer's order from single or multiple restaurants.
  * @author Aziz
  */
 public class Order {
@@ -31,6 +31,9 @@ public class Order {
     private double total;
     private Connection conn;
     
+    /**
+     * Create new order
+     */
     public Order(){
         
     }
@@ -91,6 +94,10 @@ public class Order {
         this.total = total;
     }
     
+    /**
+     * Get id from database for new order.
+     * @return integer representing the new order id
+     */
     public int getID(){
         conn = OracleConnection.getConnection();
         int ordid = 0;
@@ -108,6 +115,13 @@ public class Order {
         return ordid;
     }
     
+    /**
+     * Create new order for current user.
+     * @param oid order id for current order
+     * @param username username that order belongs to
+     * @param taxrate tax rate based on user address
+     * @param subtotal subtotal before tax
+     */
     public void createOrd(int oid, String username, double taxrate, double subtotal){
         conn = OracleConnection.getConnection();
         try{
@@ -126,6 +140,11 @@ public class Order {
         }
     }
     
+    /**
+     * List all orders belonging to current user from database
+     * @param username username who is searching for orders
+     * @return list of orders belonging to said customer
+     */
     public List<Order> getByUser(String username){
         conn = OracleConnection.getConnection();
         ArrayList<Order> orders = new ArrayList<Order>();

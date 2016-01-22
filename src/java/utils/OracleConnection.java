@@ -12,12 +12,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
+ * Connection object used to connect to Oracle database.
  * @author Aziz
  */
 public class OracleConnection {
     private static Connection connection = null;
     
+    /**
+     * Connect to Oracle DBMS server.
+     * @return a new connection object connected to database
+     */
     public static Connection getConnection(){
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -33,6 +37,9 @@ public class OracleConnection {
         return connection;
     }
     
+    /**
+     * Close active connection
+     */
     public static void closeConnection(){
         try{
             connection.close();
@@ -42,6 +49,10 @@ public class OracleConnection {
         }
     }
     
+    /**
+     * Testing functionality.
+     * @param args 
+     */
     public static void main (String[] args){
         try{
             Connection conn = OracleConnection.getConnection();

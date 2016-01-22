@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import objects.Restaurant;
 
 /**
- *
+ * Restaurant information and password updating.
  * @author Aziz
  */
 @WebServlet(name = "UpdateRestaurantServlet", urlPatterns = {"/UpdateRestaurantServlet"})
@@ -52,7 +52,8 @@ public class UpdateRestaurantServlet extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
+     * Handles password and information updates by sending them to post method.
+     * Also handles account deletion and logout procedures.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -96,7 +97,7 @@ public class UpdateRestaurantServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     * Updates restaurant password and information updates in the database.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs

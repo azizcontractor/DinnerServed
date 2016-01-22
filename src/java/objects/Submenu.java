@@ -13,13 +13,16 @@ import java.util.List;
 import utils.OracleConnection;
 
 /**
- *
+ * Submenu object that corresponds to submenu entity in the database.
  * @author Aziz
  */
 public class Submenu extends Menu{
     
     private String smcategory;
     
+    /**
+     * Create new empty submenu.
+     */
     public Submenu(){
         
     }
@@ -32,6 +35,13 @@ public class Submenu extends Menu{
         this.smcategory = smcategory;
     }
     
+    /**
+     * Create new submenu in database using parameters
+     * @param mtype menu type that submenu belongs to
+     * @param rid id of owner restaurant
+     * @param smcategory category of current submenu
+     * @return true if creation successful false if unsuccessful
+     */
     public boolean createSubmenu(String mtype, int rid, String smcategory){
         conn = OracleConnection.getConnection();
         try{
@@ -50,6 +60,12 @@ public class Submenu extends Menu{
         }
     }
     
+    /**
+     * List all submenus belonging to particular menu of particular restaurant in database.
+     * @param rid restaurant id
+     * @param mtype menu type
+     * @return list of submenu objects.
+     */
     public List<Submenu> getByRidMtype(int rid, String mtype){
         conn = OracleConnection.getConnection();
         ArrayList<Submenu> smenu = new ArrayList<Submenu>();

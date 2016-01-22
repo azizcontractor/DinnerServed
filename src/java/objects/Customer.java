@@ -11,7 +11,7 @@ import java.util.List;
 import utils.OracleConnection;
 
 /**
- *
+ * Customer object that represents customer entity in the database.
  * @author Aziz
  */
 public class Customer {
@@ -25,10 +25,23 @@ public class Customer {
     private String phone;
     private String email;
     
+    /**
+     * Creates new customer
+     */
     public Customer(){
         
     }
     
+    /**
+     * Takes parameters to create a new customer entity in the database.
+     * @param username username
+     * @param password password
+     * @param fName First name
+     * @param lName last name
+     * @param address customer address
+     * @param phone customer phone
+     * @param email customer email
+     */
     public void createCustomer(String username, String password, String fName, String lName, String address, String phone, String email){
             conn = OracleConnection.getConnection();
             try{
@@ -49,6 +62,10 @@ public class Customer {
             }
     }
     
+    /**
+     * Generates a list of current customers in the database.
+     * @return ArrayList of customer objects
+     */
     public List<Customer> getCustomer(){
         conn = OracleConnection.getConnection();
         List<Customer> customers = new ArrayList<Customer>();
@@ -77,6 +94,11 @@ public class Customer {
         return customers;
     }
     
+    /**
+     * Deletes customer from database.
+     * @param username username of customer to be deleted.
+     * @return 
+     */
     public boolean deleteCustomer(String username){
         conn = OracleConnection.getConnection();
         try{
@@ -95,6 +117,10 @@ public class Customer {
         }
     }
     
+    /**
+     * Updates customer information in the database.
+     * @param c customer object with updated information.
+     */
     public void updateCustomer(Customer c){
         conn = OracleConnection.getConnection();
         try{
@@ -115,6 +141,11 @@ public class Customer {
         }
     }
     
+    /**
+     * Finds customer in database by username
+     * @param username customer username to be searched for
+     * @return ArrayList of customers matching the username (always contains 1 entry if found and none if no match found)
+     */
     public List<Customer> getByUsername(String username){
         conn = OracleConnection.getConnection();
         ArrayList<Customer> cus = new ArrayList<Customer>();
@@ -142,6 +173,13 @@ public class Customer {
         return cus;
     }
     
+    /**
+     * Updates customer password in the database.
+     * @param username username of customer whose password is being changed.
+     * @param oldPassword old password to validate with database
+     * @param newPassword new password to update database entry.
+     * @return 
+     */
     public boolean changePassword(String username, String oldPassword, String newPassword){
         boolean valid = false;
         conn = OracleConnection.getConnection();
@@ -168,6 +206,11 @@ public class Customer {
         return valid;
     }
     
+    /**
+     * Checks if current username is unique
+     * @param username new username selected by customer
+     * @return true if valid username false if username already taken.
+     */
     public boolean validateNew(String username){
         boolean valid;
         conn = OracleConnection.getConnection();
@@ -190,6 +233,13 @@ public class Customer {
         return valid;
     }
     
+    /**
+     * Used for login authentication.
+     * Validates customer username and password using database.
+     * @param username username of customer trying to login
+     * @param pwd password of customer
+     * @return 
+     */
     public boolean validateCustomer(String username, String pwd){
         boolean valid = false;
         conn = OracleConnection.getConnection();
@@ -280,6 +330,10 @@ public class Customer {
         this.email = email;
     }
     
+    /**
+     * Testing functionality of all methods.
+     * @param args 
+     */
     public static void main(String[] args){
         Customer cus = new Customer();
         //cus.createCustomer("rambo", "2323", "Pandu", "Bhai", "I am also Homeless", "8003427654", "homeless@pandu.com");

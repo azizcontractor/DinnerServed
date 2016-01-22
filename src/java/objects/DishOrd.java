@@ -14,7 +14,7 @@ import java.util.List;
 import utils.OracleConnection;
 
 /**
- *
+ * Dish ordered by customer corresponds to similar entity in database. This is the item that is added to the order.
  * @author Aziz
  */
 public class DishOrd {
@@ -29,6 +29,9 @@ public class DishOrd {
     private String rname;
     private Connection conn;
     
+    /**
+     * Create new dish ordered.
+     */
     public DishOrd(){
         
     }
@@ -101,6 +104,10 @@ public class DishOrd {
         qty++;
     }
     
+    /**
+     * Create new dish ordered entry from a dish on the menu.
+     * @param d dish object corresponding to dish on the menu.
+     */
     public void fromDish(Dish d){
         rid = d.getRid();
         did = d.getDid();
@@ -110,6 +117,10 @@ public class DishOrd {
         dname = d.getDname();
     }
     
+    /**
+     * Add ordered to dish to current order.
+     * @param oid current order id
+     */
     public void addToOrd(int oid){
         ordid = oid;
         conn = OracleConnection.getConnection();
@@ -130,6 +141,11 @@ public class DishOrd {
         }
     }
     
+    /**
+     * Find dishes in a specific order given by order id
+     * @param oid id for the order dishes belong to
+     * @return a list of dishes on the specific order
+     */
     public List<DishOrd> getByOID(int oid){
         conn = OracleConnection.getConnection();
         ArrayList<DishOrd> dishes = new ArrayList<DishOrd>();
